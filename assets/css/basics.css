@@ -1,0 +1,7 @@
+.noclick {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .tac {
+    text-align: center;
+  }

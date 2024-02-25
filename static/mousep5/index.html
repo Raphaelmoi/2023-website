@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fun with P5.js</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/p5/p5.js"></script>
+    <script src="js/p5/p5dom.js"></script>
+    <script src="js/Fire.js"></script>
+    <script src="js/personnages.js"></script>
+    <script src="js/sketch.js"></script>
+  </head>
+
+  <body>
+    <section class="htmlPart">
+      <header>
+        <div class="navbtn" onclick="nav(-1)" title="Trainée précédente"></div>
+        <h2>Trainée <span id="currentindex"> 1</span></h2>
+        <div onclick="addnewFire()" title="Ajouter une trainée">+</div>
+        <div
+          class="navbtn right"
+          onclick="nav(1)"
+          title="Trainée suivante"
+        ></div>
+      </header>
+
+      <div class="range">
+        <div class="colorPicker">
+          <input
+            type="color"
+            id="favcolor"
+            name="favcolor"
+            oninput="colorInput(this.value); updateRangesBar()"
+            value="#ffffff"
+          />
+        </div>
+
+        <div>
+          <label for="colorR"><span>Cyan</span> <span>Rouge</span> </label>
+          <input
+            id="colorR"
+            type="range"
+            oninput="fire[fireIndex].RGB[0] = parseInt(this.value); updateColorPickerValue()"
+            min="1"
+            max="255"
+            value="255"
+          />
+        </div>
+        <div>
+          <label for="colorG"><span>Magenta</span> <span>Vert</span></label>
+          <input
+            id="colorG"
+            type="range"
+            oninput="fire[fireIndex].RGB[1] = parseInt(this.value); updateColorPickerValue()"
+            min="1"
+            max="255"
+            value="255"
+          />
+        </div>
+        <div>
+          <label for="colorB"><span>Jaune</span> <span>Bleu</span></label>
+          <input
+            id="colorB"
+            type="range"
+            oninput="fire[fireIndex].RGB[2] = parseInt(this.value); updateColorPickerValue()"
+            min="1"
+            max="255"
+            value="255"
+          />
+        </div>
+      </div>
+      <div class="range ">
+        <label for="colorrandom">Différence de couleur entre 2 bulles</label>
+        <input
+          id="colorrandom"
+          type="range"
+          oninput="fire[fireIndex].colorRandomDif = parseInt(this.value);"
+          min="1"
+          max="255"
+        />
+      </div>
+      <div class="range">
+        <label for="maxsize">Taille maximum des bulles </label>
+        <input
+          id="maxsize"
+          type="range"
+          oninput="fire[fireIndex].maxSize = parseInt(this.value)"
+          min="5"
+          max="150"
+          value="25"
+        />
+      </div>
+
+      <div class="range">
+        <label for="trainee">Longueur de la trainée</label>
+        <input
+          id="trainee"
+          type="range"
+          oninput="fire[fireIndex].lengthTraine = parseInt(this.value)"
+          min="10"
+          max="200"
+          value="20"
+        />
+      </div>
+
+      <div class="range">
+        <label for="framePerS">Rythme apparition / disparition</label>
+        <input
+          id="framePerS"
+          type="range"
+          oninput="fire[fireIndex].coef = this.value/100"
+          min="1"
+          max="25"
+          value="5"
+        />
+      </div>
+
+      <div class="range ">
+        <label for="opacityStart">Opacité de départ</label>
+        <input
+          id="opacityStart"
+          type="range"
+          oninput="fire[fireIndex].opacityStart = parseInt(this.value) / 100"
+          min="1"
+          max="100"
+          value="10"
+        />
+      </div>
+
+      <div>
+        <label for="firex">Décalage horizontale</label>
+        <input
+          id="firex"
+          type="range"
+          oninput="fire[fireIndex].x = parseInt(this.value)"
+          min="-300"
+          max="300"
+          value="0"
+        />
+        <label for="firey">Décalage verticale</label>
+        <input
+          id="firey"
+          type="range"
+          oninput="fire[fireIndex].y = -parseInt(this.value);"
+          min="-300"
+          max="300"
+          value="0"
+        />
+      </div>
+
+      <!-- <div onclick="console.log(fire)">log fire</div> -->
+    </section>
+
+    <section class="personnages">
+      <div onclick="setAstro()">
+        <img src="assto2.png" alt="" />
+      </div>
+
+      <div onclick="setUFO()">
+        <img src="ufosmall.png" alt="" />
+      </div>
+
+      <div onclick="setSpaceship1()">
+        <img src="airship.png" alt="" />
+      </div>
+
+      <div onclick="setSpaceship2()">
+        <img src="spaceship01.png" alt="" />
+      </div>
+    </section>
+
+    <section
+      class="boussole"
+      onmousedown="startaction = true"
+      onmouseup="startaction = false"
+      onmousemove="dragForDirection(event)"
+    >
+      <h2>Vent / Gravité</h2>
+      <span class="hor"></span>
+      <span class="ver"></span>
+      <div class="boussoleBubble"></div>
+      <section onclick="resetBubbleBoussole()">
+        RESET
+      </section>
+    </section>
+
+    <section
+      class="boussole fireXY"
+      onmousedown="startaction = true"
+      onmouseup="startaction = false"
+      onmousemove="dragForFireXY(event)"
+    >
+      <h2>
+        Direction <br />
+        de la trainée
+      </h2>
+      <span class="hor"></span>
+      <span class="ver"></span>
+      <div class="boussoleBubble"></div>
+    </section>
+  </body>
+</html>
+
+<script>
+  let asideEl = document.getElementsByClassName("htmlPart")[0];
+  let allEl = asideEl.querySelectorAll("*");
+  let startaction = false;
+  asideEl.addEventListener("mousedown", function(e) {
+    asideEl.style.background = "#3333";
+    allEl.forEach(element => {
+      if (e.target !== element) {
+        element.style.opacity = 0.1;
+      } else {
+        element.parentElement.style.opacity = 1;
+      }
+    });
+    asideEl.style.opacity = "1";
+  });
+  asideEl.addEventListener("mouseup", function(e) {
+    asideEl.style.background = "#333";
+    allEl.forEach(element => {
+      element.style.opacity = 1;
+    });
+  });
+
+  function dragForDirection(e) {
+    if (startaction) {
+      let elBubbleBoussole = document.getElementsByClassName(
+        "boussoleBubble"
+      )[0];
+      let elBoussole = document.getElementsByClassName("boussole")[0];
+      var rect = elBoussole.getBoundingClientRect();
+      var theX = e.clientX - rect.left;
+      var theY = e.clientY - rect.top;
+      theX = theX > 100 ? 100 : theX < 0 ? 0 : theX;
+      theY = theY > 100 ? 100 : theY < 0 ? 0 : theY;
+      elBubbleBoussole.style.left = theX + "px";
+      elBubbleBoussole.style.top = theY + "px";
+      theX -= 50;
+      theY -= 50;
+      forceX = Math.round((1 + theX / 1000) * 1000) / 1000;
+      forceY = Math.round((1 + theY / 1000) * 1000) / 1000;
+    }
+  }
+
+  function dragForFireXY(e) {
+    if (startaction) {
+      let elBubbleBoussole = document.getElementsByClassName(
+        "boussoleBubble"
+      )[1];
+      let elBoussole = document.getElementsByClassName("boussole")[1];
+      var rect = elBoussole.getBoundingClientRect();
+      var theX = e.clientX - rect.left;
+      var theY = e.clientY - rect.top;
+      theX = theX > 100 ? 100 : theX < 0 ? 0 : theX;
+      theY = theY > 100 ? 100 : theY < 0 ? 0 : theY;
+      elBubbleBoussole.style.left = theX + "px";
+      elBubbleBoussole.style.top = theY + "px";
+      theX -= 50;
+      theY -= 50;
+      fire[fireIndex].coefX = (Math.round((1 - theX / 10) * 10) / 10) * 2;
+      fire[fireIndex].coefY = (Math.round((1 - theY / 10) * 10) / 10) * 2;
+    }
+  }
+
+  function resetBubbleBoussole() {
+    let elBubbleBoussole = document.getElementsByClassName("boussoleBubble")[0];
+    forceX = 1;
+    forceY = 1;
+    elBubbleBoussole.style.top = "50px";
+    elBubbleBoussole.style.left = "50px";
+  }
+</script>

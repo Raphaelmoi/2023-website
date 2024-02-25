@@ -1,0 +1,639 @@
+body, html{
+	margin: 0;
+}
+header{
+	border-bottom: 4px #0288d1 solid;
+}
+.backendHome{
+	padding-top: 42px;
+	width: 100%;
+	display: flex;
+}
+.astroImg
+{
+	position: fixed;
+	top: 2px;
+	width: 50px;
+	z-index: 99;
+	background-color: transparent;
+	left: -5px;
+	transform: scale(-1, 1);
+}
+/*LEFT ASIDE*/
+.leftAside{
+	position: fixed;
+	left: 0;
+	top: 42px;
+	bottom: 0;
+	width: 18%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	justify-content: space-between;
+}
+.leftAside>div{
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+}
+.leftAside img{
+	width: 150px;
+	height: 150px;
+	border-radius: 20px;
+	object-fit: cover;
+	margin: 10px;
+	margin-bottom: 5px;
+	border: 4px #0288d1 solid;
+}
+.leftAside h3{
+	margin: 0;
+	font-variant: small-caps;
+	font-size: 30px;
+}
+.leftAside p{
+	margin: 6px;
+	font-size: 18px;
+}
+.leftAside b{
+	font-weight: bold;
+	font-size: 20px;
+}
+.settingsBtn{
+	width: 90%;
+	background-image:linear-gradient(#fdd835, orange );
+	height: 32px;
+	border: 2px orange solid;
+	border-radius: 5px;
+	line-height: 32px;
+	margin-bottom: 10px;
+}
+.settingsBtn i{
+	margin-right: 10px;
+}
+.btnBackSettings{
+	margin-bottom: 20px;
+}
+.btnBackSettings i{
+	margin-right: 15px;
+}
+.settingsBtn:hover{
+	background-image:linear-gradient(orange, #fdd835);
+}
+/*CENTER*/
+.centerArticle{
+	width: 60%;
+	margin-left: 18%;
+	padding-top: 70px;
+	background-color: whitesmoke;
+}
+.startGame{
+	margin-bottom: 30px;
+}
+/*RIGHT ASIDE chat*/
+.rightAside
+{
+	position: fixed;
+	right: 0;
+	top: 42px;
+	bottom: 0px;
+	width: 22%;
+}
+.chatContainer{
+	position: absolute;
+	top: 0;
+	bottom: 15%;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding-bottom: 30px;
+}
+.rightAside h2{
+	text-align: center;
+	font-family: 'Amatic SC', cursive;
+	font-size: 30px;
+	margin: 10px;
+}
+.messageChat{
+	width: 98%;
+	margin: auto;
+	border-radius: 5px;
+	margin-bottom: 8px;
+	padding-left: 8px;
+}
+.messageChatTitle{
+	display: flex;
+}
+.messageChatTitle img{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+	background-color: whitesmoke;
+}
+.messageChatTitle h4{
+	margin: 0 10px;
+	line-height: 20px;
+	font-size: 20px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.messageChatTitle p{
+	margin: 0 10px;
+	font-size: 12px;
+	line-height: 18px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.messageChat>p{
+	margin: 0px 10px 15px 10px;
+}
+/*Box for writing a new comment*/
+.postComment{
+	position: absolute;
+	bottom: 0;
+	padding: 0;
+	margin-bottom: 3px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px gray;
+}
+.postComment .messageChatTitle{
+	border-radius:  10px 10px 0 0;
+	background-color: whitesmoke;
+	padding: 3px;
+	border-bottom: 1px #BBB solid;
+}
+.postComment form{
+	display: flex;
+	flex-direction: column;
+	height: 70px;
+}
+.postComment textarea{
+	height: 100%;
+	border : none;
+	padding: 15px;
+}
+/*Buttons design*/
+.btnValideChat, .btnSubmitSetting, .moreCats{
+	background-image:linear-gradient(#4fc3f7, #0288d1);
+	height: 40px;
+	border: 1px #0288d1 solid;
+	margin-top: 5px;
+	border-radius:5px;
+}
+.btnValideChat{
+	background-image: none;
+	border : none;
+	position: absolute;
+	bottom: 7px;	
+	right: 20px;
+	height: 20px;
+	color: #EEE;
+}
+.btnValideChat input{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	opacity: 0;
+	z-index: 9;
+	cursor: pointer ;
+}
+.btnValideChat i {
+	object-position: absolute;
+	top: 0;
+	right: 10px;
+	bottom: 10px;
+	color: #777;
+}
+.moreCats{
+	width: 300px;
+	height: 40px;
+	text-align: center;
+	cursor: pointer ;
+	font-size: 20px;
+	line-height: 40px;
+}
+.btnPagination{
+	height: 24px;
+	line-height: 24px;
+	margin: 2px;
+	padding: 4px;
+	color: whitesmoke;
+	font-size: 15px;
+	background-image:linear-gradient(#4fc3f7, #0288d1);
+	border: 1px #0288d1 solid;
+	margin-top: 5px;
+	border-radius:5px;
+}
+.forbidenBtn{
+	background-image: none; 
+	background-color: gray; 
+	border:none;
+}
+.btnSubmitSetting:hover, .moreCats:hover, .btnPagination:hover{
+	background-image:linear-gradient(#0288d1, #4fc3f7);
+}
+.btnValideChat:hover i{
+	color: #111;
+}
+.btnInscriptionBox
+{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+/*APPEAR in the chat when mouse hover pseudo or img of other player*/
+.infoAboutUser{
+	display: none;
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 28px;
+	margin-top: 20px;
+	background-color: whitesmoke;
+	border-radius: 0 16px 16px 16px;
+	border: 1px #0288d1 solid;
+	z-index: 99;
+}
+.infoAboutUser img{
+	width: 100%;
+	height: 100%;
+	border-radius: 0 16px 16px 16px;
+	object-fit: cover;
+}
+.infoAboutUser div{
+	position: absolute;
+	background-color: rgba(250, 250, 250, 0.85);
+	border-radius: 0 0 16px 16px;
+	bottom: 0;
+	width: 100%;
+	height: 30%;
+	text-align: center;
+}
+.infoAboutUser h4{
+	color: #111;
+	font-variant: small-caps;
+}
+.infoAboutUser p{
+	color: black;
+	font-weight: bolder;
+}
+.messageChatTitle:hover  .infoAboutUser{
+	display: block;
+}
+.infoAboutUser:hover{
+	display: block;
+}
+/*SETTINGS VIEW*/
+.mainContentSettings{
+	background-color: whitesmoke;
+	width: 90%;
+	height: 100%;
+	padding: 20px;
+}
+.mainContentSettings h3{
+	text-align: center;
+	font-size: 36px;
+	font-family: 'Amatic SC', cursive;
+	margin: 15px;
+}
+.mainContentSettings>div{
+	display: flex;	
+	margin: 10px;
+}
+.mainContentSettings form{
+	text-align: center;
+	margin-top: 50px;
+}
+.mainContentSettings form p{
+	font-size: 20px;
+}
+.mainContentSettings input{
+	height: 40px;
+	width: 300px;
+	border-radius: 5px;
+	font-size: 20px;
+	padding-left: 10px;
+}
+.settingView{
+	width: 100%;
+	height: 92vh;
+	align-items: center;
+	padding-top: 42px;
+	display: flex;
+}
+/*settings menu*/
+.settings{
+	display: inline-block;
+	margin: 0 50px 0 20px;
+	min-width: 20%;
+}
+.settings ul{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	padding-bottom: 10px;
+}
+.settings li {
+	list-style-type: none;
+	width: 100%;
+	margin: 5px;
+	background-image:linear-gradient(#fdd835, orange );
+	height: 50px;
+	border: 2px #fdd835 solid;
+	border-radius: 5px;
+	line-height: 50px;
+	overflow: hidden;
+	text-align: center;
+}
+.settings li:hover{
+	background-image:linear-gradient(orange, #fdd835);
+}
+.infoUserSettings{
+	padding: 20px;
+	background-color: #DDD;
+	border-radius: 10px;
+}
+.infoUserSettings img{
+	width: 200px;
+	height: 200px;
+	border-radius: 10px;
+	margin-right: 20px;
+	object-fit: cover;
+}
+.infoUserSettings h4{
+	font-size: 30px;
+	margin: 0;
+	font-variant: small-caps;
+}
+.commentsSettings{
+	flex-direction: column;
+}
+.commentsSettings span{
+	font-weight: bold;
+}
+.deleteComment{
+	color:red; 
+	float: right;
+}
+.commentsSettings p{
+	margin: 0 10px;
+	padding: 5px;
+}
+.commentsSettings p:hover{
+	background-color: #DDD;
+}
+/*page players view*/
+.playersViewSection{
+	flex-direction: column;
+	width: 80%;
+	float: right;
+	clear: both;
+	margin-top: 46px;
+}
+table{
+	background-color: whitesmoke;
+	width: 100%;
+	height: 100%;
+    border-collapse: collapse;
+}
+.titleTable{
+	height: 40px;
+	background-color: rgba(253, 216, 53, 0.7);
+}
+.titleTable:hover{
+	background-color: rgba(253, 216, 53, 0.8);
+}
+td img{
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	padding: 0;
+	margin-top: 5px;
+}
+td
+{
+    text-align: center;
+    border-bottom: 1px #BBB solid;
+    margin: 0;
+}
+tr:hover {
+	background-color: rgba(253, 216, 53, 0.3);
+}
+.deleteBtn{
+	width: 200px;
+	height: 40px;
+	background-image:linear-gradient( #ff5131, red);
+	text-align: center;
+	line-height: 40px;
+	border-radius: 5px;
+	align-self: flex-end;
+	margin: 20px;
+}
+.deleteBtn:hover{
+	background-image:linear-gradient(red, #ff5131);
+}
+.paginationDiv{
+	bottom: 0;
+	left: 18%;
+	right: 0;
+	height: 40px;
+	background-color: whitesmoke;
+	padding: 0 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.paginationDiv>div{
+	height: 40px;
+	line-height: 40px;
+}
+
+@media all and (max-width: 720px) {
+	#smallHeader{
+		height: 67px;
+	}
+	#smallHeader h1{
+		margin-top: 18px;
+	}
+	.backendHome{
+		flex-direction: column;
+	}
+	.leftAside{
+		position: absolute;
+		left: 0;
+		top: 60px;
+		right: 0;
+		width: 100%;
+		height: 200px;
+		z-index: 10;
+		background-color: whitesmoke;
+	}
+	.leftAside>div{
+		margin-top: 10px;
+		flex-direction: row;
+		width: 100%;
+	}
+	.leftAside h3{
+		font-size: 25px;
+	}
+	.leftAside p{
+		font-size: 12px;
+	}
+	.leftAside b{
+		font-size: 12px;
+	}
+	.btnsAsideLeft{
+		background-color: whitesmoke;
+	}
+	.settingsBtn{
+		margin: 2px 5px;
+		height: 25px;
+		font-size: 13px;
+		line-height: 25px;
+		margin-bottom: 5px;
+	}
+	/*CENTER*/
+	.centerArticle{
+		width: 100%;
+		margin-left: 0%;
+		padding-top: 300px;
+		background-color: white;
+	}
+	/*RIGHT ASIDE chat*/
+	.rightAside
+	{
+		position: relative;
+		top: unset;
+		width: 100%;
+		height: 500px;
+	}
+	.chatContainer{
+		top: 140px;
+		bottom: 0;
+		width: 100%;
+		padding-bottom: 30px;
+	}
+	.postComment{
+		position: absolute;
+		bottom: unset;
+		top: 0;
+		margin-bottom: 3px;
+		box-shadow: 0px 10px 10px gray;
+	}
+	/*page players view*/
+	.playersViewSection{
+		width: 100%;
+		margin-top: 300px;
+	}
+	.titleTable{
+		height: 20px;
+		font-size: 12px;
+	}
+	#pseudoTD{
+		max-width: 50px;
+		overflow: hidden;
+	}
+	.scoreTD{
+		display: none;
+	}
+	#positionTD{
+		max-width: 20px;
+	}
+	.totalScoreTD{
+		max-width: 50px;
+		overflow: hidden;
+	}
+	td img{
+		width: 40px;
+		height: 40px;
+		object-fit: cover;
+		padding: 0;
+		margin-top: 5px;
+	}
+	.settingView{
+		width: 100%;
+		height: 200px;
+		align-items: center;
+		padding-top: 73px;
+		display: flex;
+		flex-direction: column;
+	}
+	.settings{
+		width: 100%;
+		margin: 0;
+	}
+	.settings ul{
+		width: 99%;
+		padding: 0;
+		margin: 0px;
+		padding-bottom: 3px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.settings a{
+		width: 48%;
+		margin: 0 1%;
+	}
+	.settings li {
+		width: 100%;
+		height: 20px;
+		line-height: 20px;
+		margin: 2px 0px;
+		font-size: 14px;
+	}
+	.mainContentSettings{
+		width: 100%;
+		height: auto;
+		padding: 0px;
+	}
+	.mainContentSettings h3{
+		font-size: 30px;
+		margin: 5px;
+	}
+	.mainContentSettings>div{
+		display: flex;	
+		margin: 10px;
+	}
+	.mainContentSettings form{
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	.mainContentSettings form p{
+		font-size: 15px;
+	}
+	.mainContentSettings input{
+		height: 30px;
+		width: 70%;
+		font-size: 15px;
+	}
+	.moreCats{
+		height: 30px;
+		margin: 5px;
+		font-size: 15px;
+		line-height: 30px;
+		overflow: hidden;
+	}
+	.infoUserSettings{
+		padding: 8px;
+	}
+	.infoUserSettings img{
+		width: 100px;
+		height: 100px;
+		border-radius: 10px;
+		margin-right: 10px;
+		object-fit: cover;
+	}
+	.infoUserSettings h4{
+		font-size: 20px;
+		margin-left: 3px;
+	}
+	.infoUserSettings p{
+		margin: 3px;
+	}
+	.paginationDiv{
+		left: 0;
+	}
+}

@@ -1,0 +1,259 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #222;
+}
+header {
+  position: fixed;
+  top: 0;
+  background-color: #fdd835;
+  width: 100%;
+  padding: 0;
+  z-index: 12;
+}
+h1 {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 3px 3px #795548;
+  margin: 0;
+  font-variant: small-caps;
+  font-family: "Open Sans", sans-serif;
+}
+.startGame {
+  width: 80%;
+  margin-left: 10%;
+  height: 300px;
+  position: relative;
+  background: orange;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.startGame a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.startGame a:hover .titleBtn {
+  background-color: rgba(2, 136, 209, 0.85);
+}
+.startGame img {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.titleBtn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: rgba(2, 136, 209, 0.6);
+  color: #ddd;
+  font-family: "Amatic SC", cursive;
+  font-size: 40px;
+  border-radius: 0 0 10px 10px;
+  border-top: 3px #0288d1 solid;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+/*Bkg of big btn for games*/
+.panel {
+  /* display: none; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 63px;
+  overflow: hidden;
+  left: 30%;
+  background-color: rgba(2, 136, 209, 0.2);
+  border-left: 10px rgba(2, 136, 209, 1) solid;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: #eee;
+  transform: translateX(100%);
+}
+.panel h3 {
+  font-family: "Amatic SC", cursive;
+  margin: 0;
+  text-align: center;
+  font-size: 28px;
+}
+.panel p {
+  margin: 0 20px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+}
+.startGame:hover .panel {
+  display: block;
+  /* animation-name: showDetails;
+  animation-duration: 1s; */
+  transition: 1s ease;
+  transform: translateX(0);
+  /* left: 10%; */
+}
+.lockedGame {
+  position: absolute;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: rgba(150, 150, 150, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.lockedGame i {
+  font-size: 60px;
+}
+.lockedGame p {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.lockedGame:hover,
+.lockedGame p:hover {
+  color: rgba(50, 50, 50, 1);
+}
+/*BTN header*/
+.connect {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 40px;
+  z-index: 1;
+  padding: 10px;
+  display: flex;
+  padding: 0;
+  line-height: 40px;
+  padding-left: 10px;
+  overflow: hidden;
+  z-index: 9999;
+}
+.connect > div {
+  height: 90%;
+  padding: 0 10px;
+  margin-right: 2px;
+  background-color: orange;
+  border-left: 3px transparent solid;
+  border-right: 3px transparent solid;
+  border-bottom: 3px transparent solid;
+  border-radius: 0 0 10px 10px;
+}
+.connect > div:hover {
+  border-left: 3px #fb8c00 solid;
+  border-right: 3px #fb8c00 solid;
+  border-bottom: 3px #fb8c00 solid;
+}
+.connect i {
+  margin-right: 10px;
+}
+.connect a {
+  color: #4e342e;
+}
+/*CHOOSE A CAT PANEL*/
+#boxImg img {
+  width: 130px;
+  height: 130px;
+  border-radius: 40px;
+  border: 5px transparent solid;
+  opacity: 0.85;
+  object-fit: cover;
+  margin: 10px;
+}
+#boxImg img:hover,
+.active {
+  border: 5px #0288d1 solid;
+  opacity: 1;
+}
+/*ALERT BOX*/
+.alert {
+  position: absolute;
+  opacity: 0;
+  border-radius: 20px;
+  width: 90%;
+  left: 5%;
+  top: 21%;
+  height: 70px;
+  z-index: -10;
+  color: whitesmoke;
+  text-align: center;
+  justify-content: center;
+  animation-name: disparait;
+  animation-duration: 3.5s;
+}
+.alertRed {
+  background-color: #f44336;
+}
+.alertGreen {
+  background-color: #aeea00;
+}
+.alert p {
+  margin: 0;
+  font-size: 30px;
+  line-height: 70px;
+}
+/*animation for success and failmsg */
+@keyframes disparait {
+  0% {
+    opacity: 1;
+    z-index: 99;
+  }
+  65% {
+    opacity: 0.9;
+    z-index: 99;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+/*animation for btn game*/
+@keyframes showDetails {
+  0% {
+    opacity: 0;
+    right: 0;
+    left: 100%;
+  }
+  100% {
+    opacity: 1;
+    z-index: 10;
+    left: 30%;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .startGame {
+    height: 200px;
+  }
+  .titleBtn {
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+  }
+  .panel {
+    bottom: 40px;
+  }
+  .panel h3 {
+    font-size: 18px;
+  }
+  .panel p {
+    margin: 0 10px;
+    font-size: 12px;
+  }
+}
+@media all and (max-width: 720px) {
+  .connect {
+    height: 25px;
+    line-height: 25px;
+    right: 5px;
+  }
+}

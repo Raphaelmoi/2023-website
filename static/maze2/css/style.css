@@ -1,0 +1,206 @@
+body {
+  margin: 0;
+  padding: 0;
+  /*    height: 100%;
+    width: 100%;*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  --shadow-x: 3%;
+  --shadow-y: 3%;
+  --canvas-x: 3%;
+  --canvas-y: 3%;
+  font-family: "Open Sans", sans-serif;
+  overflow: hidden;
+}
+
+.mazeBtn {
+  position: absolute;
+  right: 5%;
+  bottom: 15%;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.mazeBtn.trois {
+  bottom: 10%;
+}
+.mazeBtn.second {
+  bottom: 21%;
+}
+
+.Life {
+  position: absolute;
+  top: 10px;
+  width: 100px;
+  right: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 10;
+}
+#lifebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #008080ee;
+  transition: 0.3s ease;
+}
+.settingsPanel {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  bottom: 10%;
+  right: 60%;
+  background: #eeec;
+  z-index: 3;
+  padding: 1rem;
+  transition: 0.5s ease;
+  box-shadow: 0 0 100px 0 #333;
+}
+.settingsPanel label {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+.hindingRight {
+  top: 5%;
+  left: 97vw;
+  bottom: 85%;
+  right: unset;
+  padding-left: 3rem;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.rangeLegend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rangeLegend p {
+  margin: 0;
+}
+.settingsPanel article {
+  margin-top: 2rem;
+}
+
+input[type="range"] {
+  width: 100%;
+  display: block;
+}
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.playBtn div {
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border: 1px black solid;
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+}
+.playBtn div:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+.closeBtnBox {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.closePanelBtn {
+  position: relative;
+  width: 6px;
+  height: 30px;
+  background: #000;
+  transform: rotate(45deg);
+  transition: 0.5s ease;
+  border-radius: 4px;
+  display: block;
+}
+.closePanelBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 30px;
+  background: #000;
+  border-radius: 4px;
+  transform: rotate(-90deg);
+}
+.hindingRight .closeBtnBox {
+  /* left: 20px; */
+  transform: translateY(-0);
+}
+.hindingRight .closePanelBtn {
+  /* right: unset;
+  left: 20px; */
+  transform: rotate(90deg);
+}
+canvas {
+  position: absolute;
+  top: var(--canvas-y);
+  left: var(--canvas-x);
+}
+.unScaleCanvas {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  top: unset;
+  left: unset;
+  transition: 1s ease;
+}
+
+.shadow {
+  position: absolute;
+  transition: 1s ease;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  /* circle at var(--shadow-x) var(--shadow-y), */
+  /* background: radial-gradient(
+    circle at 50% 50%,
+    #0000,
+    #000a 15%,
+    #000 20%,
+    #000 75%
+  ); */
+  background: radial-gradient(circle at 50% 50%, #0000, #000a 15%, #000 75%);
+  /* opacity: 0.9; */
+}
+
+.endGame {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  display: none;
+  transition: 0.5s ease;
+}
+.endGame div {
+  padding: 8px;
+  margin: 0 1rem;
+  background: #fff;
+  border: 1px black solid;
+}

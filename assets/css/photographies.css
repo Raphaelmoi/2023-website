@@ -1,0 +1,178 @@
+.pagePhoto {
+    z-index: 3;
+    position: relative;
+    background:#151515;
+    color: #eee;
+    display: flex;
+    align-items: flex-start;
+    min-height: 100vh;
+    --red: rgb(179, 36, 36);
+}
+.pagePhoto.clear {
+    background: transparent;
+    color: #151515;
+    transition: .2s ease;
+}
+.pagePhoto aside {
+    flex: 1;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+}
+.pagePhoto aside nav {
+    padding-left: 100px;
+    font-family: 'Quicksand';
+    margin-top: auto;
+}
+.pagePhoto aside nav a {
+    /* display: block; */
+    color: white;
+    font-weight: 100;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .5s ease;
+}
+.pagePhoto.clear aside nav a  {
+    color: #151515;
+}
+.pagePhoto aside nav a:hover {
+    color: var(--red);
+}
+
+.ppHead {
+    margin-left: 100px;
+    font-family: 'Quicksand';
+    margin-bottom: 30px;
+}
+.ppHead h1 {
+    font-weight: 100;
+    font-size: 2.5rem;
+    color: var(--red);
+    margin: 0;
+}
+.ppHead h2 {
+    font-weight: 100;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+.ppHead a {
+    color: #ccc;
+    width: 100%;
+    display: block;
+    transition: .5s ease; 
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+}
+.ppHead a:hover {
+    color: #fff;
+}
+.clear .ppHead a {
+    color: #151515;
+}
+.btnDarkmode {
+    position: fixed;
+    top: 30px; 
+    left: 30px;
+    background: #eee;
+    color: #111;
+    border-radius: 4px;
+    padding: .1em .5em;
+    font-family: 'Quicksand';
+    cursor: pointer;
+}
+.clear .btnDarkmode {
+    background: #151515;
+    color: #eee;
+}
+
+.pagePhoto > section {
+    flex: 3;
+    /* background: #444; */
+}
+
+@keyframes textanim {
+    from {
+        opacity: 0.1;
+        transform: translateY(10px);
+    }
+}
+.emptyblock {
+    height:300px
+}
+@media all and (max-width: 1400px){
+    .emptyblock {
+        height: 100px;
+    }   
+    .pagePhoto aside nav  {
+        padding-left: 30px;
+    }
+    .ppHead {
+        margin-left: 30px;
+    }
+    .pagePhoto aside nav a {
+        font-size: 1rem;
+    }
+}
+@media all and (max-width: 1300px){
+  
+  
+}
+@media all and (max-width: 1000px){
+    .pagePhoto {
+        flex-direction: column;
+    }
+    .pagePhoto aside {
+        position: relative;
+        top: 0;
+        height: auto;
+        margin-top: 100px;
+    }
+    .emptyblock {
+        display: none;
+    } 
+    .btnDarkmode {
+        position: absolute;
+        top: 10px;
+        left: unset;
+        right: 10px;
+    }
+}
+
+/* 
+.mapTransition-enter-active {
+    transition: all 0.5s ease-in-out;
+    background: gold;
+  }
+  .mapTransition-leave-active {
+    opacity: 0;
+    background: green;
+
+    transition: all 0.1s ease-in-out;
+  }
+  .mapTransition-enter {
+    background: blue;
+
+    transform: translateY(100vh);
+  }
+  .mapTransition-leave-to {
+    opacity: 0;
+    transform: translateY(-100vh);
+    background: red;
+  } */
+  .home-enter-active img {
+    transition: all .5s; 
+  }
+  .home-leave-active  img{
+    transition: all .5s; 
+   }
+  .home-enter img {
+    transform: scale(1.5);
+  }
+  .home-leave-active img {
+       transform: scale(0.5);
+    }

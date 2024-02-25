@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="icon" type="image/x-icon" href="img/astroicone.ico" /> -->
+    <title>Labyrinthe</title>
+    <meta name="description" content="Sortez du labyrinthe vivant !" />
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script> -->
+
+    <script src="js/utils.js"></script>
+    <script src="js/userAction.js"></script>
+    <script src="js/maze.js"></script>
+    <script src="js/Mine.js"></script>
+    <script src="js/Thing.js"></script>
+    <script src="js/Personnages.js"></script>
+    <script src="js/sketch.js"></script>
+    <script src="js/Cell.js"></script>
+  </head>
+
+  <body>
+    <div class="Life">
+      <span id="lifebar"></span>
+    </div>
+    <div class="shadow"></div>
+
+    <section class="settingsPanel hindingRight">
+      <div class="closeBtnBox" onclick="togglePanel()">
+        <div class="closePanelBtn "></div>
+      </div>
+
+      <article>
+        <label for="ennemies_qtt">Nombre d'ennemies ( entre 0 et 200 )</label>
+        <div class="rangeLegend">
+          <p>0</p>
+          <input
+            type="number"
+            value="13"
+            min="0"
+            max="200"
+            id="ennemies_qttN"
+            oninput="nbrOfennemies = parseInt(this.value); updateInputs()"
+          />
+          <p>200</p>
+        </div>
+
+        <input
+          type="range"
+          name="ennemies_qtt"
+          id="ennemies_qtt"
+          min="0"
+          max="200"
+          value="13"
+          oninput="nbrOfennemies = parseInt(this.value); updateInputs()"
+        />
+      </article>
+
+      <article>
+        <label for="nbrOfRows">Taille du labyrinthe ( entre 5 et 50 )</label>
+        <input
+          type="number"
+          value="18"
+          id="nbrOfRowsN"
+          oninput="targetW = parseInt(this.value); updateInputs()"
+        />
+
+        <input
+          type="range"
+          name="nbrOfRows"
+          id="nbrOfRows"
+          min="5"
+          max="50"
+          value="18"
+          oninput="targetW = parseInt(this.value); updateInputs()"
+        />
+      </article>
+      <br />
+
+      <article>
+        <label for="ennemies_qtt">Epaisseur des murs</label>
+        <input
+          type="number"
+          value="5"
+          min="1"
+          max="30"
+          id="wall_weight"
+          oninput="wallWeight = parseInt(this.value); updateInputs()"
+        />
+      </article>
+
+      <div>
+        <label for="scaleCanvas">Scale</label>
+        <input
+          type="number"
+          value="15"
+          min="10"
+          max="100"
+          id="scaleCanvas"
+          oninput="scaleCanvas = parseInt(this.value / 10)"
+        />
+      </div>
+
+      <div>
+        <!-- <div>Niveau 1</div>
+        <div>Niveau 2</div>
+        <div>Niveau 3</div> -->
+      </div>
+      <div class="playBtn">
+        <div onclick="resetGame(); togglePanel()">Jouer</div>
+        <div onclick="resetGame(); ">
+          Tester le labyrinthe
+        </div>
+        <div onclick="toggleCanvasScale(); ">Scale/noScale</div>
+      </div>
+    </section>
+
+    <div class="endGame">
+      <div onclick="resetGame()">recommencer</div>
+      <div class="timeGame" id="timeEl">temps passé</div>
+      <div>niveau suivant</div>
+    </div>
+  </body>
+
+  <script>
+    function toggleCanvasScale() {
+      elCanvas.classList.toggle("unScaleCanvas");
+    }
+
+    function togglePanel() {
+      document.getElementsByClassName("shadow")[0].style.opacity = 0;
+      document
+        .getElementsByClassName("settingsPanel")[0]
+        .classList.toggle("hindingRight");
+      updateInputs();
+    }
+    function updateInputs() {
+      document.getElementById("ennemies_qtt").value = nbrOfennemies;
+      document.getElementById("ennemies_qttN").value = nbrOfennemies;
+      document.getElementById("nbrOfRows").value = targetW;
+      document.getElementById("nbrOfRowsN").value = targetW;
+      document.getElementById("scaleCanvas").value = scaleCanvas * 10;
+    }
+    function hideEndgamePanel() {
+      document.getElementsByClassName("endGame")[0].style.display = "none";
+    }
+    function showEngGamePanel() {
+      document.getElementsByClassName("endGame")[0].style.display = "block";
+    }
+  </script>
+</html>
